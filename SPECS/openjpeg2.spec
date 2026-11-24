@@ -5,7 +5,7 @@
 
 Name:           openjpeg2
 Version:        2.4.0
-Release:        5%{?dist}
+Release:        5.1%{?dist}
 Summary:        C-Library for JPEG 2000
 
 # windirent.h is MIT, the rest is BSD
@@ -28,6 +28,8 @@ Patch2:         openjpeg2-CVE-2021-29338.patch
 # Fix CVE-2021-3575
 Patch3:         openjpeg2-CVE-2021-3575.patch
 Patch4:         openjpeg2-CVE-2022-1122.patch
+# CVE-2024-56826 — upstream backport
+Patch5: openjpeg2-2.4.0-CVE-2024-56826.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -332,6 +334,9 @@ make test -C %{_target_platform}
 
 
 %changelog
+* Sat Aug 15 2026 Jason Rodriguez <jrodriguez@ciq.com> - 2.4.0-5.1
+- Fix CVE-2024-56826
+
 * Wed Jun 15 2022 Matej Mužila <mmuzila@redhat.com> - 2.4.0-5
 - Fix CVE-2022-1122
 
